@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Harini Birthday Surprise</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+text-align:center;
+background:linear-gradient(135deg,#fbc2eb,#a6c1ee);
+overflow:hidden;
+}
+
+
+h1{
+font-family:'Pacifico';
+color:white;
+text-shadow:3px 3px 10px rgba(0,0,0,0.4);
+}
+
+h2{
+font-family:'Dancing Script';
+font-size:34px;
+}
+
+.section{
+display:none;
+padding-top:120px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:25px;
+margin:10px;
+cursor:pointer;
+background:#ff4da6;
+color:white;
+}
+
+.result{
+font-size:24px;
+margin-top:20px;
+color:white;
+}
+
+.timer{
+font-size:28px;
+color:white;
+}
+
+/* welcome image */
+
+#welcome img{
+width:220px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* bubbles */
+
+.bubble{
+position:absolute;
+padding:14px 24px;
+border-radius:40px;
+border:none;
+font-weight:bold;
+cursor:pointer;
+color:white;
+}
+
+#mom{background:#ff9aa2}
+#dad{background:#ffb7b2}
+#brother{background:#ffdac1;color:black}
+#shravani{background:#e2f0cb;color:black}
+#anu{background:#b5ead7;color:black}
+#monika{background:#c7ceea}
+#karthik{background:#d5aaff}
+#pradeep{background:#9bf6ff;color:black}
+
+#pooja{
+background:#ff1493;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+/* heart animation */
+
+#heart{
+font-size:200px;
+display:none;
+animation:beat 1s infinite;
+}
+
+@keyframes beat{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+/* gift */
+
+#gift{
+font-size:120px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+}
+
+/* final page */
+
+#final{
+background:linear-gradient(135deg,#89f7fe,#66a6ff);
+height:100vh;
+overflow:auto;
+padding-top:80px;
+color:white;
+}
+
+/* letter card */
+
+.card{
+background:linear-gradient(135deg,#ffe0f0,#ffd6a5,#caffbf);
+color:#333;
+width:60%;
+margin:auto;
+padding:35px;
+border-radius:20px;
+box-shadow:0 25px 60px rgba(0,0,0,0.35);
+line-height:1.8;
+font-size:18px;
+}
+
+/* gallery */
+
+.gallery img{
+width:200px;
+margin:10px;
+border-radius:12px;
+box-shadow:0 0 15px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.1);
+}
+
+/* floating hearts */
+
+.heartFloat{
+position:absolute;
+bottom:-50px;
+font-size:30px;
+animation:floatHeart linear infinite;
+}
+
+@keyframes floatHeart{
+0%{transform:translateY(0);opacity:1}
+100%{transform:translateY(-120vh);opacity:0}
+}
+
+/* confetti */
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px)}
+100%{transform:translateY(100vh)}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME -->
+
+<div id="welcome">
+
+<h1>Welcome Harini 💖</h1>
+
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie8.jpg">
+
+<br><br>
+
+<button onclick="startPage()">Start Surprise</button>
+
+</div>
+
+<!-- QUESTION 1 -->
+
+<div id="q1" class="section">
+
+<h2>If I was a mosquito would you still be my best friend or slap me?</h2>
+
+<button onclick="q1('best')">Still best friend</button>
+<button onclick="q1('slap')">Slap me</button>
+
+<p id="msg1" class="result"></p>
+<div id="timer1" class="timer"></div>
+
+</div>
+
+<!-- QUESTION 2 -->
+
+<div id="q2" class="section">
+
+<h2>If zombies attack will you save me or use me as bait?</h2>
+
+<button onclick="q2('save')">Save me</button>
+<button onclick="q2('bait')">Use as bait</button>
+
+<p id="msg2" class="result"></p>
+<div id="timer2" class="timer"></div>
+
+</div>
+
+<!-- QUESTION 3 -->
+
+<div id="q3" class="section">
+
+<h2>If aliens kidnap me will you negotiate or say keep her?</h2>
+
+<button onclick="q3('neg')">Negotiate</button>
+<button onclick="q3('keep')">Keep her</button>
+
+<p id="msg3" class="result"></p>
+<div id="timer3" class="timer"></div>
+
+</div>
+
+<!-- BUBBLE QUESTION -->
+
+<div id="bubbleSection" class="section">
+
+<h2>Who is your favourite person?</h2>
+
+<button class="bubble" id="mom">Mom</button>
+<button class="bubble" id="dad">Dad</button>
+<button class="bubble" id="brother">Brother</button>
+<button class="bubble" id="shravani">Shravani</button>
+<button class="bubble" id="anu">Anu</button>
+<button class="bubble" id="monika">Monika</button>
+<button class="bubble" id="karthik">Karthik</button>
+<button class="bubble" id="pradeep">Pradeep</button>
+
+<button class="bubble" id="pooja" onclick="showName()">Pooja</button>
+
+</div>
+
+<!-- NAME -->
+
+<div id="nameSection" class="section">
+
+<h2>Enter name of your best friend</h2>
+
+<input id="bestieName">
+
+<br><br>
+
+<button onclick="checkName()">Submit</button>
+
+<p id="nameResult"></p>
+
+<div id="heart">❤️</div>
+
+<br>
+
+<button onclick="showGift()">Continue</button>
+
+</div>
+
+<!-- GIFT -->
+
+<div id="giftSection" class="section">
+
+<h2>Open your birthday gift 🎁</h2>
+
+<div id="gift" onclick="openGift()">🎁</div>
+
+</div>
+
+<!-- FINAL PAGE -->
+
+<div id="final" class="section">
+
+<h1>🎉 Happy Birthday Harini 🎂</h1>
+
+<div class="card">
+
+<p id="letter"></p>
+
+</div>
+
+<div class="gallery">
+
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie1.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie2.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie3.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie4.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie5.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie6.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie7.jpg">
+<img src="C:\Users\pooja\Desktop\bestphoto\bestie8.jpg">
+
+</div>
+
+</div>
+
+<script>
+
+/* start */
+
+function startPage(){
+document.getElementById("welcome").style.display="none"
+document.getElementById("q1").style.display="block"
+startTimer("timer1",30)
+}
+
+/* timer */
+
+function startTimer(id,time){
+
+let t=time
+
+let timer=setInterval(function(){
+
+document.getElementById(id).innerHTML="⏳ "+t+"s"
+
+t--
+
+if(t<0){
+clearInterval(timer)
+}
+
+},1000)
+
+}
+
+/* typing message */
+
+function typeMessage(id,text,callback){
+
+let i=0
+let el=document.getElementById(id)
+el.innerHTML=""
+
+function typing(){
+
+if(i<text.length){
+el.innerHTML+=text.charAt(i)
+i++
+setTimeout(typing,40)
+}else{
+if(callback) setTimeout(callback,1200)
+}
+
+}
+
+typing()
+
+}
+
+/* questions */
+
+function q1(a){
+
+if(a==="slap"){
+typeMessage("msg1","I hate you 😤")
+}else{
+typeMessage("msg1","Good answer 😌",()=>{
+document.getElementById("q1").style.display="none"
+document.getElementById("q2").style.display="block"
+startTimer("timer2",30)
+})
+}
+
+}
+
+function q2(a){
+
+if(a==="save"){
+typeMessage("msg2","abba  is this for real ❤️")
+}else{
+typeMessage("msg2","Nayee 😤")
+}
+
+setTimeout(()=>{
+document.getElementById("q2").style.display="none"
+document.getElementById("q3").style.display="block"
+startTimer("timer3",30)
+},2000)
+
+}
+
+function q3(a){
+
+if(a==="neg"){
+typeMessage("msg3","❤️")
+}else{
+typeMessage("msg3","Handi makdovle 😡")
+}
+
+setTimeout(()=>{
+document.getElementById("q3").style.display="none"
+document.getElementById("bubbleSection").style.display="block"
+},2000)
+
+}
+
+/* bubbles moving */
+
+let bubbles=["mom","dad","brother","shravani","anu","monika","karthik","pradeep"]
+
+bubbles.forEach(id=>{
+let b=document.getElementById(id)
+b.onmouseover=function(){
+b.style.left=Math.random()*90+"%"
+b.style.top=Math.random()*80+"%"
+}
+})
+
+function showName(){
+document.getElementById("bubbleSection").style.display="none"
+document.getElementById("nameSection").style.display="block"
+}
+
+/* name check */
+
+function checkName(){
+
+let name=document.getElementById("bestieName").value.toLowerCase()
+
+if(name==="pooja"){
+document.getElementById("nameResult").innerHTML="Correct 💖"
+document.getElementById("heart").style.display="block"
+}else{
+document.getElementById("nameResult").innerHTML="I will kill you 😤"
+}
+
+}
+
+function showGift(){
+document.getElementById("nameSection").style.display="none"
+document.getElementById("giftSection").style.display="block"
+}
+
+/* gift */
+
+function openGift(){
+
+confetti()
+
+document.getElementById("giftSection").style.display="none"
+document.getElementById("final").style.display="block"
+
+typeLetter()
+
+}
+
+/* confetti */
+
+function confetti(){
+
+for(let i=0;i<120;i++){
+
+let c=document.createElement("div")
+
+c.className="confetti"
+
+c.style.left=Math.random()*100+"%"
+
+c.style.backgroundColor="hsl("+Math.random()*360+",100%,50%)"
+
+c.style.animationDuration=(Math.random()*3+2)+"s"
+
+document.body.appendChild(c)
+
+}
+
+}
+
+/* floating hearts */
+
+function createHearts(){
+
+for(let i=0;i<20;i++){
+
+let heart=document.createElement("div")
+
+heart.className="heartFloat"
+
+heart.innerHTML="❤️"
+
+heart.style.left=Math.random()*100+"%"
+
+heart.style.animationDuration=(Math.random()*6+5)+"s"
+
+document.body.appendChild(heart)
+
+}
+
+}
+
+createHearts()
+
+/* letter typing */
+
+let text=`Dear Harini 💖,
+
+Happy Birthday to the most amazing best friend anyone could ever ask for! 🎉🎂🥳 I honestly don’t know where I would be without you in my life. From all our silly conversations to the moments where we support each other through everything, every memory with you is something I truly treasure. 🌸✨
+
+You are not just my best friend, you are my safe place, my biggest supporter, and the person who makes even the most ordinary days feel special. 💕 No matter how busy life gets, talking to you always brings a smile to my face. Your kindness, your craziness, your laughter, and your beautiful heart make you one of the most special people I know. 🌈💫
+
+Thank you for always being there for me — whether it’s listening to my random thoughts, laughing at stupid jokes, or standing by me during difficult times. Real friendships like ours are rare, and I’m so grateful that life brought us together. 🤍
+
+I love all the memories we’ve made so far — the laughs, the jokes, the secrets, the chaos, and the unforgettable moments. And honestly, I can’t wait to make a million more memories with you. 📸💭
+
+On your special day, I just want you to remember how important you are, how loved you are, and how lucky I feel to have you as my best friend. You deserve all the happiness in the world, all the success, all the love, and every beautiful thing life has to offer. 🌟💐
+
+May this year bring you endless smiles, exciting adventures, dreams coming true, and moments that make your heart full of joy. I hope your life is always filled with laughter, positivity, and the people who truly care about you. 💖
+
+Never change who you are, because the person you are today is already wonderful. Thank you for being you, and thank you for being my best friend. 🫶
+
+Once again, Happy Birthday Harini! 🎂🎈🎁
+I hope this day becomes one of your most beautiful memories ever.
+
+With lots and lots of love, hugs, and happiness 💕
+Your forever best friend,
+Pooja 💗`
+
+
+let i=0
+
+function typeLetter(){
+
+if(i<text.length){
+
+document.getElementById("letter").innerHTML+=text.charAt(i)
+
+i++
+
+setTimeout(typeLetter,40)
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
